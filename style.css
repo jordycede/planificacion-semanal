@@ -6,6 +6,7 @@
     --success-color: #4caf50;
     --error-color: #f44336;
     --admin-color: #3b8deb;
+    --warning-color: #ff9800;
 }
 
 * {
@@ -131,6 +132,22 @@ body {
     font-weight: bold;
 }
 
+.admin-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#save-record-btn {
+    background-color: var(--success-color);
+    margin-right: 10px;
+}
+
+#view-records-btn {
+    background-color: var(--warning-color);
+    margin-right: 10px;
+}
+
 #logout-btn {
     background-color: white;
     color: var(--admin-color);
@@ -162,7 +179,6 @@ body {
     white-space: nowrap;
 }
 
-/* Resto del CSS (container, table, etc.) sigue igual que antes */
 .container {
     max-width: 100%;
     margin: 0 auto;
@@ -323,6 +339,12 @@ button:disabled {
     overflow-y: auto;
 }
 
+.large-modal {
+    max-width: 90%;
+    width: 90%;
+    max-height: 80vh;
+}
+
 .modal-header {
     display: flex;
     justify-content: space-between;
@@ -423,6 +445,130 @@ textarea {
     display: flex;
 }
 
+/* Nuevos estilos para controles de administrador de semana */
+.admin-week-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.date-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.date-inputs label {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.date-inputs input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.admin-week-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+#save-week-btn {
+    background-color: var(--success-color);
+}
+
+#new-week-btn {
+    background-color: var(--primary-color);
+}
+
+/* Estilos para registros */
+.records-list {
+    max-height: 60vh;
+    overflow-y: auto;
+    margin: 15px 0;
+}
+
+.record-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.record-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.record-dates {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.record-date {
+    margin-left: auto;
+    margin-right: 10px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.delete-record-btn {
+    background-color: var(--error-color);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.delete-record-btn:hover {
+    background-color: #d32f2f;
+}
+
+.record-content {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.record-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.record-content th, .record-content td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.record-content th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.show-record {
+    display: block;
+}
+
 /* Media Queries */
 @media (min-width: 481px) {
     .container {
@@ -474,6 +620,40 @@ textarea {
         display: inline;
         margin-left: 5px;
     }
+    
+    .admin-actions {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 767px) {
+    .admin-actions {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    #save-record-btn, #view-records-btn {
+        margin-right: 0;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+    
+    .record-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .record-date {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 5px;
+    }
+    
+    .delete-record-btn {
+        margin-left: 0;
+        margin-top: 5px;
+        align-self: flex-end;
+    }
 }
 
 @media (hover: none) {
@@ -510,5 +690,10 @@ textarea {
     
     .admin-login-btn {
         width: 100%;
+    }
+    
+    .large-modal {
+        max-width: 95%;
+        width: 95%;
     }
 }

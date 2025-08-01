@@ -33,7 +33,11 @@
 
     <div class="admin-bar" id="admin-bar">
         <span>Modo Administrador</span>
-        <button id="logout-btn">Cerrar sesión</button>
+        <div class="admin-actions">
+            <button id="save-record-btn">Guardar Registro</button>
+            <button id="view-records-btn">Ver Registros</button>
+            <button id="logout-btn">Cerrar sesión</button>
+        </div>
     </div>
 
     <div class="container">
@@ -44,11 +48,19 @@
         
         <p class="info-text">La celda solo se podrá llenar una sola vez. Haz clic en una celda para agregar tu planificación.</p>
         
-        <div class="week-navigation">
-            <div class="week-range" id="week-range">01/08/2023 - 07/08/2023</div>
-            <div class="week-buttons">
-                <button id="prev-week">← Anterior</button>
-                <button id="next-week">Siguiente →</button>
+        <div class="week-navigation" id="week-navigation">
+            <div class="week-range" id="week-range">Semana sin fecha asignada</div>
+            <div class="admin-week-controls" id="admin-week-controls" style="display: none;">
+                <div class="date-inputs">
+                    <label for="start-date">Fecha inicio (Lunes):</label>
+                    <input type="date" id="start-date">
+                    <label for="end-date">Fecha fin (Domingo):</label>
+                    <input type="date" id="end-date">
+                </div>
+                <div class="admin-week-buttons">
+                    <button id="save-week-btn">Guardar Semana</button>
+                    <button id="new-week-btn">Nueva Semana</button>
+                </div>
             </div>
         </div>
         
@@ -57,17 +69,17 @@
                 <thead>
                     <tr>
                         <th>Horario</th>
-                        <th id="day-0">VIERNES<br><span class="date">01/08</span></th>
-                        <th id="day-1">SÁBADO<br><span class="date">02/08</span></th>
-                        <th id="day-2">DOMINGO<br><span class="date">03/08</span></th>
-                        <th id="day-3">LUNES<br><span class="date">04/08</span></th>
-                        <th id="day-4">MARTES<br><span class="date">05/08</span></th>
-                        <th id="day-5">MIÉRCOLES<br><span class="date">06/08</span></th>
-                        <th id="day-6">JUEVES<br><span class="date">07/08</span></th>
+                        <th>LUNES</th>
+                        <th>MARTES</th>
+                        <th>MIÉRCOLES</th>
+                        <th>JUEVES</th>
+                        <th>VIERNES</th>
+                        <th>SÁBADO</th>
+                        <th>DOMINGO</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Las filas de horarios se generarán con JavaScript -->
+                    <!-- Las filas se generan con JavaScript -->
                 </tbody>
             </table>
         </div>
@@ -79,10 +91,25 @@
                 <h3 class="modal-title" id="modal-title">Agregar planificación</h3>
                 <button class="close-btn" id="close-modal">&times;</button>
             </div>
-            <textarea id="event-text" placeholder="Escribe tu Nombre aquí ..."></textarea>
+            <textarea id="event-text" placeholder="Escribe aquí tu planificación para este horario..."></textarea>
             <div class="modal-footer">
                 <button class="cancel-btn" id="cancel-event">Cancelar</button>
                 <button class="save-btn" id="save-event">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="records-modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Registros Guardados</h3>
+                <button class="close-btn" id="close-records-modal">&times;</button>
+            </div>
+            <div class="records-list" id="records-list">
+                <!-- Los registros se cargarán aquí -->
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" id="close-records-btn">Cerrar</button>
             </div>
         </div>
     </div>
