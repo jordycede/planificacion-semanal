@@ -21,7 +21,7 @@ const ADMIN_CREDENTIALS = {
 };
 
 // Variables de estado
-let currentDate = new Date();
+let currentDate = new Date(2025, 7, 1); // 1 de agosto de 2025
 let selectedCell = null;
 let isAdmin = false;
 const storageKey = 'weeklyPlannerData_v4';
@@ -139,10 +139,10 @@ function updateWeekDates() {
         dayElement.dataset.fullDate = formatDate(dayDate, false, true);
     }
     
-    // Deshabilitar botón de semana anterior si estamos en la semana actual
-    const today = new Date();
-    const currentWeekStart = getWeekStart(today);
-    prevWeekBtn.disabled = formatDate(weekStart) === formatDate(currentWeekStart);
+    // Deshabilitar botón de semana anterior si estamos en o antes de la semana del 1 de agosto de 2025
+    const minDate = new Date(2025, 7, 1); // 1 de agosto de 2025
+    const minWeekStart = getWeekStart(minDate);
+    prevWeekBtn.disabled = weekStart <= minWeekStart;
 }
 
 // Obtener el inicio de la semana (lunes)
