@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="true">
+    <title>Planificación Semanal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-modal" id="login-modal">
+        <div class="login-content">
+            <h2>Acceso de Administrador</h2>
+            <p class="login-info">Solo puede ingresar el administrador de la página</p>
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" placeholder="Ingrese usuario">
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" placeholder="Ingrese contraseña">
+                </div>
+                <div class="form-actions">
+                    <button id="login-btn">Ingresar</button>
+                    <button id="cancel-login">Cancelar</button>
+                </div>
+                <p id="login-error" class="error-message"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-bar" id="admin-bar">
+        <span>Modo Administrador</span>
+        <button id="logout-btn">Cerrar sesión</button>
+    </div>
+
+    <div class="container">
+        <div class="header-section">
+            <h1>PLANIFICACIÓN SEMANAL</h1>
+            <button id="admin-login-btn" class="admin-login-btn">Ingresar como Admin</button>
+        </div>
+        
+        <p class="info-text">La celda solo se podrá llenar una sola vez. Haz clic en una celda para agregar tu planificación.</p>
+        
+        <div class="week-navigation">
+            <div class="week-range" id="week-range">01/08/2023 - 07/08/2023</div>
+            <div class="week-buttons">
+                <button id="prev-week">← Anterior</button>
+                <button id="next-week">Siguiente →</button>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <table id="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Horario</th>
+                        <th id="day-0">VIERNES<br><span class="date">01/08</span></th>
+                        <th id="day-1">SÁBADO<br><span class="date">02/08</span></th>
+                        <th id="day-2">DOMINGO<br><span class="date">03/08</span></th>
+                        <th id="day-3">LUNES<br><span class="date">04/08</span></th>
+                        <th id="day-4">MARTES<br><span class="date">05/08</span></th>
+                        <th id="day-5">MIÉRCOLES<br><span class="date">06/08</span></th>
+                        <th id="day-6">JUEVES<br><span class="date">07/08</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas de horarios se generarán con JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="event-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Agregar planificación</h3>
+                <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <textarea id="event-text" placeholder="Escribe tu Nombre aquí ..."></textarea>
+            <div class="modal-footer">
+                <button class="cancel-btn" id="cancel-event">Cancelar</button>
+                <button class="save-btn" id="save-event">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

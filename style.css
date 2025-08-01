@@ -1,0 +1,514 @@
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #166088;
+    --light-color: #e8f1f2;
+    --dark-color: #1a1a2e;
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --admin-color: #3b8deb;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: var(--dark-color);
+    padding: 10px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Login Modal */
+.login-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-content {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.login-content h2 {
+    color: var(--admin-color);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-info {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.form-actions button:first-child {
+    background-color: var(--admin-color);
+    color: white;
+}
+
+.form-actions button:last-child {
+    background-color: #ddd;
+    color: #333;
+}
+
+.error-message {
+    color: var(--error-color);
+    text-align: center;
+    margin-top: 10px;
+    min-height: 20px;
+}
+
+/* Admin Bar */
+.admin-bar {
+    display: none;
+    background-color: var(--admin-color);
+    color: white;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.admin-bar span {
+    font-weight: bold;
+}
+
+#logout-btn {
+    background-color: white;
+    color: var(--admin-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Header Section */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.admin-login-btn {
+    background-color: var(--admin-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Resto del CSS (container, table, etc.) sigue igual que antes */
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    flex: 1;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.info-text {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #666;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.week-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.week-range {
+    font-weight: bold;
+    color: var(--secondary-color);
+    text-align: center;
+    font-size: 1rem;
+    order: -1;
+}
+
+.week-buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.week-buttons button {
+    flex: 1;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px 6px;
+    text-align: center;
+    min-width: 80px;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+.time-header {
+    background-color: var(--secondary-color);
+}
+
+td {
+    height: 50px;
+    vertical-align: top;
+    position: relative;
+}
+
+.time-cell {
+    background-color: #f9f9f9;
+    font-weight: bold;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+.editable {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.editable:hover {
+    background-color: #f0f0f0;
+}
+
+.has-content {
+    background-color: rgba(76, 175, 80, 0.2);
+}
+
+.date {
+    display: block;
+    font-size: 0.8em;
+    margin-top: 3px;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.save-btn {
+    background-color: var(--success-color);
+}
+
+.save-btn:hover {
+    background-color: #3d8b40;
+}
+
+.cancel-btn {
+    background-color: var(--error-color);
+}
+
+.cancel-btn:hover {
+    background-color: #d32f2f;
+}
+
+.event-content {
+    font-size: 0.8rem;
+    word-break: break-word;
+    padding: 2px 4px;
+    border-radius: 3px;
+    background-color: rgba(76, 175, 80, 0.3);
+}
+
+/* Botones de administrador */
+.admin-controls {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    display: none;
+    gap: 2px;
+}
+
+.admin-mode .admin-controls {
+    display: flex;
+}
+
+.edit-btn, .delete-btn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.edit-btn {
+    background-color: var(--primary-color);
+}
+
+.delete-btn {
+    background-color: var(--error-color);
+}
+
+.has-content:hover .admin-controls {
+    display: flex;
+}
+
+/* Media Queries */
+@media (min-width: 481px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .week-navigation {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .week-range {
+        order: 0;
+    }
+    
+    .week-buttons {
+        width: auto;
+    }
+    
+    th, td {
+        min-width: 100px;
+        padding: 10px 8px;
+    }
+    
+    td {
+        height: 60px;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    
+    .container {
+        max-width: 1200px;
+    }
+    
+    .info-text {
+        font-size: 1rem;
+    }
+    
+    .date {
+        display: inline;
+        margin-left: 5px;
+    }
+}
+
+@media (hover: none) {
+    .editable:hover {
+        background-color: inherit;
+    }
+    
+    button:active {
+        transform: scale(0.98);
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 15px;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+    }
+    
+    .modal-footer button {
+        width: 100%;
+    }
+    
+    textarea {
+        height: 120px;
+    }
+    
+    .header-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .admin-login-btn {
+        width: 100%;
+    }
+}
